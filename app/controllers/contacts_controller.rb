@@ -12,6 +12,7 @@ class ContactsController < ApplicationController
   end
 
   def new
-    @contact = Contact.find_by_id(params[:id])
+    @user = User.find_by_id(params[:user_id])
+    @contact = Contact.new
   end
 end

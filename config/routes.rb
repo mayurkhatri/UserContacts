@@ -27,6 +27,10 @@ UserContacts::Application.routes.draw do
   #     end
   #   end
 
+    resources :users, only: [:index] do
+      resources :contacts
+    end
+
   # Sample resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

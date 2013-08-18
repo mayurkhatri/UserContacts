@@ -1,5 +1,7 @@
 <h1>Contacts</h1>
-<table>
+<p><%= flash[:notice] %></p>
+<p><%= flash[:success] %></p>
+<table class="table table-bordered">
   <% unless @contacts.blank? %>
 	<tr>
     <th>First Name</th>
@@ -14,20 +16,17 @@
 	</tr>
   <% @contacts.each do |contact| %>
   <tr>
-      <td>contact.first_name</td>
-      <td>contact.last_name</td>
-      <td>contact.gender</td>        	
-      <td>contact.age</td>
-      <td>contact.phone_number</td>
-      <td>contact.email</td>
-      <td>contact.area</td>                                	
-      <td><%= link_to "Edit", edit_user_contact_path(contact.id) %></td>
-      <td><%= link_to "Delete", contact, confirm: "Delete Contact ?", method: :delete %></td>
+      <td><%= contact.first_name %></td>
+      <td><%= contact.last_name %></td>
+      <td><%= contact.gender %></td>        	
+      <td><%= contact.age %></td>
+      <td><%= contact.phone_number %></td>
+      <td><%= contact.email %></td>
+      <td><%= contact.area %></td>                                	
+      <td><%= link_to "Edit", edit_user_contact_path(current_user.id, contact.id) %></td>
+      <td><%= link_to "Delete", user_contact_path(current_user.id, contact.id), confirm: "Delete Contact ?", method: :delete %></td>
   </tr>
   <% end -%>
   <%end%>
-  <tr>
-    <td><%= link_to "Add New Contact", new_user_contact_path(current_user.id) %></td>
-  </tr>
 </table>
-
+<td><%= link_to "Add New Contact", new_user_contact_path(current_user.id), class: "btn pull-right" %></td>

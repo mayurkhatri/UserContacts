@@ -7,7 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div id="home" align="left" class="btn btn-link">
+  <% if user_signed_in? %>
+    <%= link_to "HOME", user_contacts_path %>
+  <% end %>
+</div>
 
 <div id="user_nav" align="right">
   <% if user_signed_in? %>

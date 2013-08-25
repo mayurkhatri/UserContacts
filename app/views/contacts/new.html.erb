@@ -1,6 +1,6 @@
 <h1>Add Contact</h1>
 <p><%= flash[:error] %></p>
-<%= form_for [@user, @contact] do |f| %>
+<%= form_for [@user, @contact],url: user_contacts_path(@user.id), method: :post do |f| %>
   <%= f.label :first_name %>
   <%= f.text_field :first_name %>
   <br/>  
@@ -23,5 +23,6 @@
   <%= f.text_field :area %>
   <br/>
   <br/>
-  <%= f.submit%>
+  <%= f.submit %>
+  <%= link_to "Back", user_contacts_path(@user, @contact), class: "btn"%>
 <%end%>

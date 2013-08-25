@@ -19,8 +19,8 @@
       <td><%= contact.first_name %></td>
       <td><%= contact.last_name %></td>
       <td><%= contact.gender %></td>        	
-      <td><%= contact.age %></td>
-      <td><%= contact.phone_number %></td>
+      <td><%= contact.age.to_i %></td>
+      <td><%= contact.phone_number.to_i %></td>
       <td><%= contact.email %></td>
       <td><%= contact.area %></td>                                	
       <td><%= link_to "Edit", edit_user_contact_path(current_user.id, contact.id) %></td>
@@ -29,4 +29,4 @@
   <% end -%>
   <%end%>
 </table>
-<td><%= link_to "Add New Contact", new_user_contact_path(current_user.id), class: "btn pull-right" %></td>
+<%= link_to "Add New Contact", new_user_contact_path(current_user.id), class: "btn pull-right" %>

@@ -1,0 +1,17 @@
+<%= form_for([@user, @contact], url: user_contact_path(@user.id, @contact.id), method: :put) do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %></br>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %></br>
+  <%= f.label :gender %>
+  <%= f.text_field :gender %></br>
+  <%= f.label :age %>
+  <%= f.text_field :age %></br>
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number %></br>
+  <%= f.label :email %>
+  <%= f.text_field :email %></br>
+  <%= f.label :area %>
+  <%= f.text_field :area %></br>
+  <%= f.submit %>
+<% end %>

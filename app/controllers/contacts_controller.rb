@@ -1,6 +1,9 @@
 class ContactsController < ApplicationController
   def index
-    @contacts = current_user.contacts.all
+    @contacts
+    unless current_user.contacts.blank?
+      @contacts = current_user.contacts.all
+    end
   end
 
   def create

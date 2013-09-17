@@ -22,6 +22,8 @@ end
 
 gem 'jquery-rails'
 gem 'devise' , '3.0.2'
+gem 'cancan', '1.6.10'
+gem 'rolify', '3.2.0'
 gem 'foreigner', '~> 1.4.2'
 
 # To use ActiveModel has_secure_password

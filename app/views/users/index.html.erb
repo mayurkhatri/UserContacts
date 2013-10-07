@@ -1,1 +1,13 @@
-<%= link_to "Contacts", user_contacts_path(current_user.id) %>
+<h1>All Users</h1>
+<table class="table table-bordered">
+  <tr>
+    <th>Email</th>
+    <th>Total Sign-in-count</th>
+  </tr>
+<% @users.each do |user| %>
+  <tr>
+  	<td><%= user.email%></td>
+	<td><%= user.sign_in_count %></td>
+  </tr>
+<% end %>
+</table>

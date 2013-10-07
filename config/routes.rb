@@ -1,6 +1,6 @@
 UserContacts::Application.routes.draw do
-  devise_for :users do
-#    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
+  devise_for :users, :controllers => { :registrations => "registrations", :sessions => "sessions"} do
+    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
   end
   devise_scope :user do
 
@@ -8,7 +8,11 @@ UserContacts::Application.routes.draw do
 
   resources :users, only: [:index] do
     resources :contacts
+    member do
+      get 'test_method'
+    end
   end
+  resources :pictures
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -28,5 +28,12 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    user ||= User.new
+    if user.has_role? :admin
+      can :manage, :all
+    
+    elsif user.has_role? :site_user
+      can :read, Contact
+    end
   end
 end

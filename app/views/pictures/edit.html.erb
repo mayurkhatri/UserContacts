@@ -1,0 +1,13 @@
+<h1>Editing picture</h1>
+<%= form_for @picture,:html => {:multipart => true} do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.file_field :image %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

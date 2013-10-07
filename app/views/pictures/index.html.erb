@@ -1,0 +1,11 @@
+<h1>All pictures</h1>
+<% @pictures.each do |picture| %>
+  <div class="painting">
+    <%= image_tag picture.image_url.to_s %>
+    <div class="name"><%= picture.name%></div>
+    <div class="actions">
+      <%= link_to "Edit", edit_picture_path(picture)%>
+      <%= link_to "Remove", picture, :confirm => "Are you sure?", :method => :delete %>
+    </div>
+  </div>
+<% end %>

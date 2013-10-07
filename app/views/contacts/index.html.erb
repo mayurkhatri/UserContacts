@@ -1,6 +1,7 @@
 <h1>Contacts</h1>
 <p><%= flash[:notice] %></p>
 <p><%= flash[:success] %></p>
+<%= link_to "All User List", users_path %>
 <table class="table table-bordered">
   <% unless @contacts.blank? %>
 <tr>
@@ -23,10 +24,17 @@
       <td><%= contact.phone_number.to_i %></td>
       <td><%= contact.email %></td>
       <td><%= contact.area %></td>
+      <% if can? :read, Contact%>
       <td><%= link_to "Edit", edit_user_contact_path(current_user.id, contact.id) %></td>
+      <% end%>
+      <% if can? :manage, Contact %>
       <td><%= link_to "Delete", user_contact_path(current_user.id, contact.id), confirm: "Delete Contact ?", method: :delete %></td>
+      <% end %>
   </tr>
   <% end -%>
   <%end%>
 </table>
+<p>
+  <%= link_to "Upload Picture", new_picture_path %>
+</p>
 <%= link_to "Add New Contact", new_user_contact_path(current_user.id), class: "btn pull-right" %>

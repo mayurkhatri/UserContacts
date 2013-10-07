@@ -46,6 +46,7 @@ class ContactsController < ApplicationController
   end
 
   def destroy
+    debugger
     @contact = Contact.find_by_id(params[:id])
     @contact.destroy
     flash[:notice] = 'Contact successfully deleted'

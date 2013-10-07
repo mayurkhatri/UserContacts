@@ -11,7 +11,8 @@
   <%= f.text_field :age %>
   <br/>
   <%= f.label :gender %>
-  <%= f.text_field :gender %>
+  <%= f.select(:gender, options_for_select([['M', 'M'], ['F','F']]))%>
+  
   <br/>  
   <%= f.label :phone_number %>
   <%= f.text_field :phone_number %>

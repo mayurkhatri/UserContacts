@@ -1,16 +1,15 @@
 class ContactsController < ApplicationController
   def index
     @contacts
-    unless current_user.contacts.blank?
-      @contacts = current_user.contacts.all
-    end
+
   end
 
   def create
     debugger
     @contact = Contact.new(params[:contact])
     @user = User.find_by_id(params[:user_id])
-    @contact.user = @user
+
+    @contact.users << @user
     @contact.save!
       flash[:success] = 'Contact created successfully'
       redirect_to user_contacts_path(@user.id) 

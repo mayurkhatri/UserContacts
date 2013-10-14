@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(:version => 20131009112105) do
   end
 
   create_table "information", :force => true do |t|
-    t.integer  "users_id"
-    t.integer  "contacts_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
+    t.integer  "contact_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "roles", :force => true do |t|

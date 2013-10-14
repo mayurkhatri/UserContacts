@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
   def index
     @contacts
-
+    @contacts = Contact.all
   end
 
   def create

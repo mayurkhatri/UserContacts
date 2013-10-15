@@ -1,6 +1,6 @@
 <h1>Add Contact</h1>
-<p><%= flash[:error] %></p>
 <%= form_for [@user, @contact],url: user_contacts_path(@user.id), method: :post do |f| %>
+  <%= render "shared/error_messages", :target => @contact %>
   <%= f.label :first_name %>
   <%= f.text_field :first_name %>
   <br/>  

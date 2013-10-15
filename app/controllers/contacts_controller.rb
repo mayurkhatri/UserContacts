@@ -10,13 +10,13 @@ class ContactsController < ApplicationController
     @user = User.find_by_id(params[:user_id])
 
     @contact.users << @user
-    @contact.save!
+    if @contact.save!
       flash[:success] = 'Contact created successfully'
       redirect_to user_contacts_path(@user.id) 
-    #else
-#      flash[:error] = 'Contact could not be saved'
-      #render action: 'new'
-    #end
+    else
+      flash[:error] = 'Contact could not be saved'
+      render action: 'new'
+    end
   end
 
   def new
@@ -35,8 +35,10 @@ class ContactsController < ApplicationController
   end
 
   def update
+    @user = current_user
     @contact = Contact.find_by_id(params[:id])
-    if @contact.update_attributes!(params[:contact])
+    debugger
+    if @contact.update_attributes(params[:contact])
       flash[:success] = 'Contact updated successfully'
       redirect_to user_contact_path(current_user.id, @contact.id)     
     else

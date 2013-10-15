@@ -26,6 +26,11 @@ gem 'cancan', '1.6.10'
 gem 'rolify', '3.2.0'
 gem 'foreigner', '~> 1.4.2'
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

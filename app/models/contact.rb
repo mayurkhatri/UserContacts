@@ -8,6 +8,6 @@ class Contact < ActiveRecord::Base
 
   validates :first_name, :last_name, :gender, :age, :phone_number, :email, :area, presence: true
   validates :phone_number,:age, numericality: {only_integer: true}
-#  validates_length_of :phone_number, :is => 10
+  validates :phone_number, length: { is: 10 }
   validates :email, uniqueness: true, on: :create
 end

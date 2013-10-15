@@ -1,4 +1,6 @@
+  <%= render :partial => "shared/error_messages", :locals => { :target => @contact } %>
 <%= form_for([@user, @contact], url: user_contact_path(@user.id, @contact.id), method: :put) do |f| %>
+
   <%= f.label :first_name %>
   <%= f.text_field :first_name %></br>
   <%= f.label :last_name %>

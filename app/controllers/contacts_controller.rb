@@ -5,12 +5,11 @@ class ContactsController < ApplicationController
   end
 
   def create
-    debugger
     @contact = Contact.new(params[:contact])
     @user = User.find_by_id(params[:user_id])
 
     @contact.users << @user
-    if @contact.save!
+    if @contact.save
       flash[:success] = 'Contact created successfully'
       redirect_to user_contacts_path(@user.id) 
     else
@@ -37,7 +36,10 @@ class ContactsController < ApplicationController
   def update
     @user = current_user
     @contact = Contact.find_by_id(params[:id])
-    debugger
+    if @contact.last_name.present? 
+      debugger
+     @contact.last_name = @contact.last_name.slice(0,1).capitalize + @contact.last_name.slice(1..-1)
+    end
     if @contact.update_attributes(params[:contact])
       flash[:success] = 'Contact updated successfully'
       redirect_to user_contact_path(current_user.id, @contact.id)     
@@ -47,7 +49,6 @@ class ContactsController < ApplicationController
   end
 
   def destroy
-    debugger
     @contact = Contact.find_by_id(params[:id])
     @contact.destroy
     flash[:notice] = 'Contact successfully deleted'

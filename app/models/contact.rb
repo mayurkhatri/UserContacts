@@ -2,12 +2,13 @@ class Contact < ActiveRecord::Base
   resourcify
   attr_accessible :first_name, :last_name, :gender, :age, :phone_number, :email, :area
 
-#  belongs_to :user, inverse_of: :contacts
   has_many :informations, :dependent => :destroy
   has_many :users, :through => :informations
 
   validates :first_name, :last_name, :gender, :age, :phone_number, :email, :area, presence: true
+  validates :first_name, :last_name, :format => { :with => /^[A-z]+$/ }
   validates :phone_number,:age, numericality: {only_integer: true}
   validates :phone_number, length: { is: 10 }
-  validates :email, uniqueness: true, on: :create
+  validates :email, uniqueness: true, :on => :create
+  validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 end
